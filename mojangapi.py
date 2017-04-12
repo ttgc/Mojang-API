@@ -55,7 +55,7 @@ class MojangAPI:
 
     def get_skin(self,profil):
         item = profil['properties'][0]['value']
-        start,end = item.find("SKIN"),item.find('"}}')
+        start,end = item.find("SKIN"),item.find('"}')
         item = item[start:end]
         item = item[item.find('"url":'):]
         return item.replace('"url":"',"")
