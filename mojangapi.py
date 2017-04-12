@@ -1,6 +1,6 @@
 import urllib.request as urllib2
 import json
-
+import base64
 
 class MojangAPI:
 
@@ -46,3 +46,16 @@ class MojangAPI:
             return None
 
         return uuid[0]['id']#['profiles'][0]
+
+    def get_profile(self,uuid):
+        url = 'https://sessionserver.mojang.com/session/minecraft/profile/'+uuid#+'?unsigned=false'
+        profil = self._get_json(url)
+        profil['properties'][0]['value'] = base64.b64decode(profil['properties'][0]['value']).decode()
+        return profil
+
+    def get_skin(self,profil):
+        item = profil['properties'][0]['value']
+        start,end = item.find("SKIN"),item.find('"}}')
+        item = item[start:end]
+        item = item[item.find('"url":'):]
+        return item.replace('"url":"',"")
