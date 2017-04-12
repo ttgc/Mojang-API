@@ -1,7 +1,7 @@
 Mojang-API
 ==========
 
-A Python 2 library for the Mojang API services 
+A Python 3 library adapted from python 2 library by Syfaro for the Mojang API services 
 
 ## Usage
 
