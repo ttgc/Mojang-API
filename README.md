@@ -12,7 +12,7 @@ from mojangapi import MojangAPI
 api = MojangAPI()
 
 status = api.service_statuses()
-~~news = api.mojang_news()~~
+#news = api.mojang_news()
 uuid = api.get_uuid('syfaro')
 profil = api.get_profile(uuid)
 skin = api.get_skin(profil)
